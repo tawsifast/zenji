@@ -1,14 +1,28 @@
 import Image from "next/image";
 
 const SOCIALS = [
-  { label: "TikTok", href: "https://www.tiktok.com/@zenji_.shop", color: "#010101", hover: "#010101" },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@zenji_.shop",
+    className: "bg-white text-black border-white hover:bg-[#010101] hover:text-white hover:border-[#010101]",
+    inline: {},
+  },
   {
     label: "Instagram",
     href: "https://www.instagram.com/zenji_.shop",
-    color: "#e6683c",
-    hover: "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)",
+    className: "text-white border-transparent",
+    inline: {
+      background: "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)",
+    },
   },
-  { label: "Facebook", href: "https://www.facebook.com/people/ZENJI/61592433253702/", color: "#1877f2", hover: "#1877f2" },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/people/ZENJI/61592433253702/",
+    className: "text-white border-transparent",
+    inline: {
+      background: "#1877F2",
+    },
+  },
 ];
 
 const COLUMNS = [
@@ -97,8 +111,8 @@ export default function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="min-h-[44px] px-5 inline-flex items-center justify-center border border-white/20 text-[11px] font-jetbrains font-bold uppercase tracking-widest text-white transition-colors"
-                  style={{ backgroundColor: s.color, borderColor: "transparent" }}
+                  className={`min-h-[44px] px-5 inline-flex items-center justify-center border text-[11px] font-jetbrains font-bold uppercase tracking-widest transition-colors duration-200 ${s.className}`}
+                  style={s.inline}
                 >
                   {s.label}
                 </a>

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
 
 const STACK_PRODUCTS = [
   {
@@ -27,8 +26,6 @@ const STACK_PRODUCTS = [
 ];
 
 export default function DropShowcase() {
-  const scrollerRef = useRef(null);
-
   return (
     <section id="drop-showcase" className="bg-white text-black">
       {/* Header */}
@@ -49,72 +46,67 @@ export default function DropShowcase() {
         </a>
       </div>
 
-      {/* Scroll stack */}
-      <div
-        ref={scrollerRef}
-        className="scroll-stack-scroller"
-        style={{
-          position: "relative",
-          paddingBottom: "120px",
-        }}
-      >
+      {/* Scroll stack: each card tracks one viewport-height, pinning
+          in place while you scroll past it so the next card slides over */}
+      <div className="scroll-stack-scroller bg-white">
         {STACK_PRODUCTS.map((p, i) => (
           <div
             key={p.name}
-            className="scroll-stack-card sticky"
-            style={{
-              position: "sticky",
-              top: `${92 - i * 10}px`,
-              marginTop: `${i === 0 ? 0 : "-18px"}`,
-              zIndex: STACK_PRODUCTS.length - i,
-            }}
+            className="scroll-stack-track bg-white"
+            style={{ height: "100vh", position: "relative" }}
           >
-            <a
-              href={p.href}
-              className="group block overflow-hidden border border-black/10 border-t-4 border-t-primary bg-white"
-              style={{
-                width: "1000px",
-                maxWidth: "calc(100% - 2rem)",
-                margin: "0 auto",
-                height: "min(800px, 74vh)",
-                position: "relative",
-              }}
+            <div
+              className="scroll-stack-card"
+              style={{ position: "sticky", top: "12vh" }}
             >
-              <div className="absolute inset-0">
-                <Image
-                  src={p.img}
-                  alt={`ZENJI ${p.name} anime streetwear graphic`}
-                  fill
-                  priority={i === 0}
-                  sizes="(max-width: 1000px) 100vw, 1000px"
-                  className="object-cover"
-                  style={{ objectPosition: "center 20%" }}
-                />
-              </div>
-
-              {/* Gradient overlay */}
-              <div
-                className="absolute inset-0 flex flex-col justify-end p-8"
+              <a
+                href={p.href}
+                className="group block overflow-hidden border border-black/10 bg-white"
                 style={{
-                  background:
-                    "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 40%, transparent 70%)",
+                  borderTopWidth: "4px",
+                  borderTopStyle: "solid",
+                  borderTopColor: "#bc0100",
+                  width: "1000px",
+                  maxWidth: "calc(100% - 2rem)",
+                  margin: "0 auto",
+                  height: "min(800px, 74vh)",
+                  position: "relative",
                 }}
               >
-                <p className="text-[12px] font-jetbrains uppercase tracking-[0.18em] text-primary mb-2">
-                  COLLECTION // THE_ORIGIN_DROP
-                </p>
-                <h3 className="font-anton uppercase text-white text-[32px] md:text-[40px] leading-none group-hover:text-primary transition-colors">
-                  {p.name}
-                </h3>
-                <span className="mt-3 text-[13px] font-jetbrains uppercase tracking-[0.15em] text-white border-b border-white/50 pb-1 inline-flex items-center gap-2 w-max group-hover:border-primary group-hover:text-primary transition-colors">
-                  SHOP {p.name.replace(" TEE", "")} →
-                </span>
-              </div>
-            </a>
+                <div className="absolute inset-0">
+                  <Image
+                    src={p.img}
+                    alt={`ZENJI ${p.name} anime streetwear graphic`}
+                    fill
+                    priority={i === 0}
+                    sizes="(max-width: 1000px) 100vw, 1000px"
+                    className="object-cover"
+                    style={{ objectPosition: "center 20%" }}
+                  />
+                </div>
+
+                {/* Gradient overlay */}
+                <div
+                  className="absolute inset-0 flex flex-col justify-end p-8"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 40%, transparent 70%)",
+                  }}
+                >
+                  <p className="text-[12px] font-jetbrains uppercase tracking-[0.18em] text-[#bc0100] mb-2">
+                    COLLECTION // THE_ORIGIN_DROP
+                  </p>
+                  <h3 className="font-anton uppercase text-white text-[32px] md:text-[40px] leading-none group-hover:text-[#bc0100] transition-colors">
+                    {p.name}
+                  </h3>
+                  <span className="mt-3 text-[13px] font-jetbrains uppercase tracking-[0.15em] text-white border-b border-white/50 pb-1 inline-flex items-center gap-2 w-max group-hover:border-[#bc0100] group-hover:text-[#bc0100] transition-colors">
+                    SHOP {p.name.replace(" TEE", "")} →
+                  </span>
+                </div>
+              </a>
+            </div>
           </div>
         ))}
-
-        <div className="scroll-stack-end h-8" />
       </div>
     </section>
   );

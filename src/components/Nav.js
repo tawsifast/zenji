@@ -25,11 +25,12 @@ export default function Nav() {
   return (
     <header
       id="main-nav"
-      className="sticky top-0 z-50 transition-all duration-300 ease-in-out border-b border-white/10"
+      className="sticky top-0 z-50 transition-all duration-300 ease-in-out"
       style={{
-        background: scrolled ? "rgba(255,255,255,0.02)" : "transparent",
-        backdropFilter: scrolled ? "blur(8px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(8px)" : "none",
+        background: scrolled ? "rgba(6,6,6,0.97)" : "transparent",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.1)" : "none",
+        backdropFilter: scrolled ? "blur(10px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(10px)" : "none",
       }}
     >
       <nav className="relative flex items-center justify-between px-[5%] md:px-[6%] h-16 md:h-[68px]">

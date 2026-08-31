@@ -42,8 +42,9 @@ export default function Ethos() {
     <section
       id="ethos-section"
       ref={ref}
-      className="relative overflow-hidden"
-      style={{ minHeight: "80vh" }}
+      aria-label="The ZENJI Ethos"
+      className="relative overflow-hidden bg-black"
+      style={{ height: "100vh", width: "100%" }}
     >
       {/* Background image */}
       <div className="absolute inset-0">
@@ -52,44 +53,60 @@ export default function Ethos() {
           alt=""
           fill
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-center"
+          style={{ filter: "brightness(0.75) contrast(1.05)" }}
           priority
         />
       </div>
-      {/* Overlay */}
+      {/* Overlay: horizontal gradient darker on left */}
       <div
         className="absolute inset-0"
-        style={{ background: "rgba(6,6,6,0.55)" }}
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.16) 50%, rgba(0,0,0,0.03) 100%)",
+        }}
       />
 
-      {/* Ethos label + invisible image left (implicit via bg) */}
-      <span className="sr-only">ZENJI</span>
-
-      {/* Content */}
-      <div className="relative z-10 px-[5%] md:px-[6%] py-20 md:py-32 md:pl-[46%] text-white">
-        <p
+      {/* Content: vertically centered, anchored left ~6% */}
+      <div
+        className="absolute z-[2]"
+        style={{ left: "6%", top: "50%", transform: "translateY(-50%)", maxWidth: "380px" }}
+      >
+        <span
           data-reveal
-          className="a-label text-[13px] font-jetbrains uppercase tracking-[0.2em] text-primary mb-5"
+          className="a-label block text-[10px] uppercase"
+          style={{ fontFamily: "var(--font-jetbrains), monospace", color: "#bc0100", letterSpacing: "0.3em" }}
         >
           MANIFESTO_001
-        </p>
+        </span>
 
         <div
           data-reveal
-          className="a-label w-12 h-[2px] bg-primary mb-8"
-          style={{ backgroundColor: "#bc0100" }}
+          className="a-label"
+          aria-hidden="true"
+          style={{ width: "40px", height: "1px", background: "#bc0100", margin: "16px 0" }}
         />
 
         <h2
           data-reveal
-          className="a-head font-anton uppercase tracking-tight leading-[0.95] text-5xl md:text-7xl mb-8 max-w-[520px]"
+          className="a-head text-[80px] uppercase leading-[0.85]"
+          style={{ fontFamily: "var(--font-anton), sans-serif", margin: 0 }}
         >
-          THE ZENJI <span className="text-primary">ETHOS</span>
+          <span className="block text-white">THE</span>
+          <span className="block text-[#bc0100]">ZENJI</span>
+          <span className="block text-white">ETHOS</span>
         </h2>
 
         <p
           data-reveal
-          className="a-sub max-w-[520px] text-[15px] md:text-base font-ibm-plex leading-relaxed text-white/70"
+          className="a-sub text-[13px] leading-[1.8]"
+          style={{
+            fontFamily: "var(--font-ibm-plex), monospace",
+            color: "hsla(0,0%,100%,0.6)",
+            maxWidth: "420px",
+            marginTop: "32px",
+            marginBottom: "40px",
+          }}
         >
           We exist at the intersection of technical precision and cultural expression.
           Our garments are engineered for those navigating an increasingly fragmented

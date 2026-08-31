@@ -2,8 +2,8 @@ export default function Hero() {
   return (
     <section
       id="hero-section"
-      className="relative"
-      style={{ height: "min(62vh, 140vw)", minHeight: "100%" }}
+      className="relative h-[min(62vh,140vw)] w-full overflow-hidden bg-black md:h-[calc(100vh-40px)] md:min-h-[85vh]"
+      style={{ marginTop: "-68px" }}
     >
       <div className="relative overflow-hidden w-full h-full">
         {/* Background video */}
@@ -13,6 +13,7 @@ export default function Hero() {
           muted
           loop
           playsInline
+          preload="metadata"
           poster="https://zenji.shop/hero-poster.webp"
         >
           <source src="https://zenji.shop/videos/hero.mp4" type="video/mp4" />
@@ -22,26 +23,32 @@ export default function Hero() {
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.05) 100%)",
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 28%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.05) 100%)",
           }}
         />
 
         {/* Content */}
-        <div
-          className="absolute bottom-[10%] left-[5%] md:left-[6%] text-white"
-          style={{ maxWidth: "700px" }}
-        >
-          <div className="flex items-center gap-3 mb-5">
+        <div className="absolute bottom-12 left-[6%] z-10 max-w-[90%] text-white">
+          <div className="mb-4 flex items-center gap-3">
             <span
-              className="inline-block w-2 h-2 rounded-full bg-primary loading-pulse"
+              className="inline-block h-2 w-2 rounded-full loading-pulse"
               style={{ backgroundColor: "#bc0100" }}
             />
-            <p className="text-[13px] md:text-sm font-jetbrains uppercase tracking-[0.25em] text-white/80">
-              WEAR YOUR STORY<span className="hero-cursor">|</span>
-            </p>
+            <span
+              className="font-jetbrains text-[11px] font-bold uppercase tracking-[0.3em]"
+              style={{ color: "#bc0100" }}
+            >
+              <span className="hero-cursor" style={{ color: "#bc0100" }}>
+                |
+              </span>
+            </span>
           </div>
 
-          <h1 className="font-anton uppercase leading-[0.9] tracking-tight text-white" style={{ fontSize: "clamp(52px, 8vw, 80px)" }}>
+          <h1
+            className="font-anton uppercase leading-[0.85] tracking-tight text-white"
+            style={{ fontSize: "clamp(52px, 8vw, 80px)" }}
+          >
             WEAR YOUR
             <br />
             STORY
@@ -49,7 +56,7 @@ export default function Hero() {
 
           <a
             href="/drop"
-            className="mt-8 inline-flex items-center gap-3 bg-primary text-white px-8 py-4 text-sm font-jetbrains font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:bg-white hover:text-black"
+            className="mt-8 inline-flex items-center gap-3 rounded-none bg-[#bc0100] px-8 py-4 text-[16px] font-anton uppercase text-white transition-colors duration-200 hover:bg-white hover:text-black"
           >
             SHOP THE DROP
             <span aria-hidden="true">→</span>
