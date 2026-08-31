@@ -1,26 +1,419 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-anton: var(--font-anton), sans-serif;
+  --font-archivo: var(--font-archivo), sans-serif;
+  --font-jetbrains: var(--font-jetbrains), monospace;
+  --font-ibm-plex: var(--font-ibm-plex), monospace;
+  --font-space-mono: var(--font-space-mono), monospace;
+
+  --color-primary: #bc0100;
+  --color-deep-black: #060606;
+  --color-surface: #faf8f4;
+
+  --container-container-max: 1440px;
+
+  --margin-margin-mobile: 5%;
+  --margin-margin-desktop: 6%;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* ---------- Utility: hide scrollbar ---------- */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Angular logo clip ---------- */
+.clip-logo {
+  clip-path: polygon(0 14%, 9% 0, 100% 0, 100% 86%, 91% 100%, 0 100%);
+}
+
+/* =========================================================
+   SPLASH / INTRO ANIMATIONS
+   ========================================================= */
+
+@keyframes zslamW {
+  from {
+    transform: translateX(112%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes zin {
+  0% {
+    opacity: 0;
+    transform: scale(1.35) skewX(-6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) skewX(0);
+  }
+}
+@keyframes zgA {
+  0% {
+    clip-path: inset(0 0 86% 0);
+  }
+  20% {
+    clip-path: inset(38% 0 40% 0);
+  }
+  40% {
+    clip-path: inset(74% 0 6% 0);
+  }
+  60% {
+    clip-path: inset(10% 0 70% 0);
+  }
+  80% {
+    clip-path: inset(54% 0 26% 0);
+  }
+  100% {
+    clip-path: inset(2% 0 88% 0);
+  }
+}
+@keyframes zgB {
+  0% {
+    clip-path: inset(70% 0 6% 0);
+  }
+  25% {
+    clip-path: inset(20% 0 60% 0);
+  }
+  50% {
+    clip-path: inset(82% 0 4% 0);
+  }
+  75% {
+    clip-path: inset(4% 0 82% 0);
+  }
+  100% {
+    clip-path: inset(46% 0 36% 0);
+  }
+}
+@keyframes zkanji {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.78;
+    transform: scale(1.05);
+  }
+}
+@keyframes zlines {
+  0% {
+    opacity: 0;
+    transform: scale(0.35) rotate(0);
+  }
+  55% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.16;
+    transform: scale(1.7) rotate(8deg);
+  }
+}
+@keyframes zflash {
+  0%,
+  70% {
+    opacity: 0;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes zfade {
+  0%,
+  87% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes zshake {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    transform: translate(2px, -1px);
+  }
+  60% {
+    transform: translate(-1px, -1px);
+  }
+  80% {
+    transform: translate(2px, 1px);
+  }
+}
+@keyframes zscan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 5px;
+  }
+}
+@keyframes zshine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
+.zenji-splash {
+  animation: zfade 2.85s linear forwards;
+}
+.zstage {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+}
+.zbg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(125% 105% at 50% 42%, #181818 0%, #0b0b0b 50%, #060606 100%);
+}
+.zhalf {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  clip-path: polygon(60% 0, 100% 0, 100% 100%, 40% 100%);
+  animation: zslamW 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.zkanji {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  mix-blend-mode: difference;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Noto Serif JP", "Source Han Serif JP",
+    "Songti SC", serif;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 66vw;
+  opacity: 0.5;
+  animation: zkanji 1.2s ease-in-out infinite;
+}
+.zlines {
+  position: absolute;
+  inset: -45%;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  background: repeating-conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(255, 255, 255, 0.5) 0deg 1.1deg,
+    transparent 1.1deg 5deg
+  );
+  animation: zlines 2.6s ease-out both;
+}
+.zscan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  background: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0, 0, 0, 0.5) 2px 3px);
+  animation: zscan 0.5s steps(3) infinite;
+}
+.zwrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  animation: zshake 0.2s infinite;
+}
+.zword {
+  position: relative;
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 20vw;
+  line-height: 0.9;
+  background: linear-gradient(105deg, #ecedf0 0%, #9da0a8 28%, #6e7178 50%, #c0c3c9 72%, #83868e 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  -webkit-text-stroke: 1.1px rgba(18, 18, 22, 0.3);
+  filter: drop-shadow(0 0 24px rgba(200, 205, 215, 0.3));
+  animation: zin 0.55s cubic-bezier(0.16, 1, 0.3, 1) both, zshine 3.4s linear infinite;
+}
+.zword::before,
+.zword::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-text-stroke: 0;
+}
+.zword::before {
+  color: #d7d9de;
+  -webkit-text-fill-color: #d7d9de;
+  transform: translate(-2px, 0);
+  animation: zgA 1.7s steps(2) infinite;
+}
+.zword::after {
+  color: #54575e;
+  -webkit-text-fill-color: #54575e;
+  transform: translate(2px, 0);
+  animation: zgB 2.1s steps(2) infinite;
+}
+.zflash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  animation: zflash 2.85s ease-in forwards;
+}
+.zhud {
+  position: absolute;
+  bottom: 22px;
+  mix-blend-mode: difference;
+  font-family: var(--font-space-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+  .zword {
+    font-size: 13vw;
+  }
+  .zkanji {
+    font-size: 42vw;
+  }
+}
+
+/* ---------- Wipe transition ---------- */
+.zenji-wipe {
+  transition: transform 800ms cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zhalf,
+  .zlines,
+  .zscan,
+  .zflash {
+    display: none;
+  }
+  .zenji-splash,
+  .zstage,
+  .zwrap,
+  .zword,
+  .zkanji {
+    animation: none !important;
+  }
+  .zword::before,
+  .zword::after {
+    display: none;
+  }
+}
+
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+/* =========================================================
+   SCROLL REVEAL (intersection observer)
+   ========================================================= */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+[data-reveal].a-label {
+  transition-delay: 0s;
+}
+[data-reveal].a-head {
+  transition-delay: 0.08s;
+}
+[data-reveal].a-sub {
+  transition-delay: 0.16s;
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.hero-cursor {
+  animation: blink 0.7s step-end infinite;
+}
+@keyframes loading-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.4);
+  }
+}
+.loading-pulse {
+  animation: loading-pulse 1.6s ease-in-out infinite;
 }
