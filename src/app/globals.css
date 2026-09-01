@@ -469,3 +469,46 @@ body {
 .waitlist-input:focus {
   border-color: #bc0100;
 }
+
+/* =========================================================
+   COLLECTION / LOOKBOOK
+   ========================================================= */
+@keyframes grid-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.grid-reveal {
+  opacity: 0;
+  animation: grid-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.drop-cta-dark {
+  background-color: #bc0100;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+.drop-cta-dark:hover {
+  background-color: #930100;
+}
+
+.notify-cta {
+  background-color: #bc0100;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+.notify-cta:hover {
+  background-color: #930100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid-reveal {
+    animation: none;
+    opacity: 1;
+  }
+}

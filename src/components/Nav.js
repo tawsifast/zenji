@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const LINKS = [
@@ -11,9 +12,15 @@ const LINKS = [
 ];
 
 export default function Nav() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
+  const isActive = (href) => pathname === href;
+  const linkClass = (href) =>
+    `text-[11px] font-jetbrains font-medium uppercase tracking-[0.18em] transition-colors ${
+      isActive(href) ? "text-primary" : "text-white/70 hover:text-primary"
+    }`;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -54,7 +61,7 @@ export default function Nav() {
             <a
               key={l.label}
               href={l.href}
-              className="text-[11px] font-jetbrains font-medium uppercase tracking-[0.18em] text-white/70 hover:text-primary transition-colors"
+              className={linkClass(l.href)}
             >
               {l.label}
             </a>
@@ -165,7 +172,9 @@ export default function Nav() {
               <a
                 key={l.label}
                 href={l.href}
-                className="block text-[13px] font-jetbrains uppercase tracking-[0.18em] text-white/80 hover:text-primary"
+                className={`block text-[13px] font-jetbrains uppercase tracking-[0.18em] transition-colors ${
+                  isActive(l.href) ? "text-primary" : "text-white/80 hover:text-primary"
+                }`}
               >
                 {l.label}
               </a>

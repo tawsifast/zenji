@@ -1,12 +1,17 @@
 import Image from "next/image";
 
-export default function ProductCard({ p }) {
+export default function ProductCard({
+  p,
+  className = "block w-[82vw] sm:w-[46vw] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1.125rem)] flex-shrink-0 snap-start",
+  sizes = "(max-width: 640px) 82vw, (max-width: 768px) 46vw, (max-width: 1024px) 33vw, 25vw",
+}) {
+  const front = p.images ? p.images.front : p.front;
+  const back = p.images ? p.images.back : p.back;
+  const soldOut = p.inStock === false;
+
   return (
-    <a
-      href={p.href}
-      className="group block w-[82vw] sm:w-[46vw] md:w-[calc(33.333%-1rem)] lg:w-[calc(25%-1.125rem)] flex-shrink-0 snap-start"
-    >
-      <div className="flex flex-col overflow-hidden border border-black bg-surface">
+    <a href={p.href} className={`group ${className}`}>
+      <div className="flex h-full flex-col overflow-hidden border border-black bg-surface">
         <div className="group flex aspect-[3/4] flex-col overflow-hidden">
           {/* Image area */}
           <div className="relative flex-1 overflow-hidden bg-surface">
@@ -30,21 +35,30 @@ export default function ProductCard({ p }) {
               </span>
             )}
 
+            {soldOut && (
+              <span
+                className="absolute right-0 top-0 z-20 bg-black px-2.5 py-1 font-jetbrains text-[10px] uppercase tracking-widest text-white"
+                style={{ fontFamily: "var(--font-jetbrains), monospace", backgroundColor: "#000" }}
+              >
+                SOLD OUT
+              </span>
+            )}
+
             {/* Front image */}
             <Image
-              src={p.front}
+              src={front}
               alt={`ZENJI ${p.name} anime streetwear, front`}
               fill
-              sizes="(max-width: 640px) 82vw, (max-width: 768px) 46vw, (max-width: 1024px) 33vw, 25vw"
+              sizes={sizes}
               className="object-cover object-top transition-opacity duration-300 group-hover:opacity-0"
               loading="lazy"
             />
             {/* Back image */}
             <Image
-              src={p.back}
+              src={back}
               alt={`ZENJI ${p.name} anime streetwear, back`}
               fill
-              sizes="(max-width: 640px) 82vw, (max-width: 768px) 46vw, (max-width: 1024px) 33vw, 25vw"
+              sizes={sizes}
               className="object-cover object-top opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               loading="lazy"
             />
