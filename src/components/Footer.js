@@ -66,7 +66,7 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black text-white overflow-hidden">
+    <footer className="relative flex min-h-screen flex-col bg-black text-white overflow-hidden">
       {/* Watermark */}
       <div
         aria-hidden="true"
@@ -74,18 +74,18 @@ export default function Footer() {
         style={{
           fontSize: "clamp(120px, 24vw, 300px)",
           color: "rgba(255,255,255,0.04)",
-          marginTop: "40px",
           position: "absolute",
-          top: 0,
+          top: "50%",
           left: 0,
           right: 0,
+          transform: "translateY(-50%)",
           lineHeight: 0.8,
         }}
       >
         ZENJI
       </div>
 
-      <div className="relative z-10 px-[5%] md:px-[6%] pt-32 pb-10">
+      <div className="relative z-10 flex flex-1 flex-col px-[5%] md:px-[6%] pt-30 pb-10">
         {/* Top grid */}
         <div className="grid grid-cols-1 md:grid-cols-[30%_1fr] gap-10">
           {/* Left: logo + tagline + socials */}
@@ -147,7 +147,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-jetbrains">
+        <div className="mt-auto pt-10 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-[11px] font-jetbrains">
           <p className="text-white/45">© 2026 ZENJI. All drops are final. No restocks. Ever.</p>
           <div className="flex items-center gap-5 text-white/45">
             <a href="/privacy-policy" className="hover:text-primary transition-colors">

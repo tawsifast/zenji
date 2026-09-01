@@ -46,19 +46,19 @@ export default function DropShowcase() {
         </a>
       </div>
 
-      {/* Scroll stack: each card tracks one viewport-height, pinning
-          in place while you scroll past it so the next card slides over */}
-      <div className="scroll-stack-scroller bg-white">
+      {/* Scroll stack */}
+      <div className="scroll-stack-scroller bg-white pb-[10vh]">
         {STACK_PRODUCTS.map((p, i) => (
           <div
             key={p.name}
-            className="scroll-stack-track bg-white"
-            style={{ height: "100vh", position: "relative" }}
+            className="scroll-stack-track pointer-events-none" 
+            style={{ 
+              height: "100vh", 
+              position: "sticky", 
+              top: "12vh" // Sticky is now on the 100vh container
+            }}
           >
-            <div
-              className="scroll-stack-card"
-              style={{ position: "sticky", top: "12vh" }}
-            >
+            <div className="scroll-stack-card w-full pointer-events-auto">
               <a
                 href={p.href}
                 className="group block overflow-hidden border border-black/10 bg-white"
@@ -71,6 +71,7 @@ export default function DropShowcase() {
                   margin: "0 auto",
                   height: "min(800px, 74vh)",
                   position: "relative",
+                  boxShadow: "0 -10px 30px rgba(0,0,0,0.1)" // Optional: adds a nice drop shadow between stacked layers
                 }}
               >
                 <div className="absolute inset-0">

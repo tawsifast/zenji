@@ -417,3 +417,55 @@ body {
 .loading-pulse {
   animation: loading-pulse 1.6s ease-in-out infinite;
 }
+
+/* =========================================================
+   WORD REVEAL (scroll-triggered, word-by-word)
+   ========================================================= */
+.word-reveal-block {
+  white-space: nowrap;
+}
+.word-reveal-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
+}
+.word-reveal-space {
+  display: inline-block;
+  white-space: pre;
+}
+.word-reveal-word {
+  display: inline-block;
+  transform: translateY(120%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.word-reveal-word.revealed {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word-reveal-word {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =========================================================
+   DROP WAITLIST / CTA
+   ========================================================= */
+.drop-cta {
+  background-color: #bc0100;
+  color: #fff;
+  border: 1px solid #bc0100;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.drop-cta:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.waitlist-input:focus {
+  border-color: #bc0100;
+}

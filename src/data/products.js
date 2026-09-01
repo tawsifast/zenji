@@ -1,0 +1,78 @@
+export const PRODUCTS = [
+  {
+    name: "BLUE FLAME TEE",
+    href: "/drop/blue-flame-tee",
+    front: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Blue-flame-1.webp",
+    back: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Blue-flame-2.webp",
+    price: 39.99,
+    sale: 33.99,
+  },
+  {
+    name: "BUSHIDO TEE",
+    href: "/drop/bushido-tee",
+    front: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Bushido-1.webp",
+    back: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Bushido-2.webp",
+    price: 39.99,
+  },
+  {
+    name: "DEMON BLOOD TEE",
+    href: "/drop/demon-blood-tee",
+    front: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Demon-blood-1.webp",
+    back: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Demon-blood-2.webp",
+    price: 39.99,
+    sale: 33.99,
+  },
+  {
+    name: "DOMAIN EXPANSION TEE",
+    href: "/drop/domain-expansion-tee",
+    front: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Domain-expansion-1.webp",
+    back: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Domain-expansion-2.webp",
+    price: 39.99,
+  },
+  {
+    name: "FREE SOUL TEE",
+    href: "/drop/free-soul-tee",
+    front: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Free-soul-1.webp",
+    back: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Free-soul-2.webp",
+    price: 39.99,
+  },
+  {
+    name: "LIMITLESS TEE",
+    href: "/drop/limitless-tee",
+    front: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Limitless-1.webp",
+    back: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Limitless-2.webp",
+    price: 39.99,
+  },
+  {
+    name: "PARADISE SPIRIT TEE",
+    href: "/drop/paradise-spirit-tee",
+    front: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Paradise-spirit-1.webp",
+    back: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Paradise-spirit-2.webp",
+    price: 39.99,
+  },
+  {
+    name: "WARRIOR SPIRIT TEE",
+    href: "/drop/warrior-spirit-tee",
+    front: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Warrior-spirit-2.webp",
+    back: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Warrior-spirit-4.webp",
+    price: 39.99,
+    sale: 33.99,
+  },
+  {
+    name: "WATER BREATHING TEE",
+    href: "/drop/water-breathing-tee",
+    front: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Water-breathing-1.webp",
+    back: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Water-breathing-2.webp",
+    price: 39.99,
+  },
+  {
+    name: "WILL OF THE SUN TEE",
+    href: "/drop/will-of-the-sun-tee",
+    front: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Will-of-the-sun-1.webp",
+    back: "https://res.cloudinary.com/diqbikizp/image/upload/f_auto,q_auto/zenji/products/Will-of-the-sun-2.webp",
+    price: 39.99,
+    sale: 33.99,
+  },
+];
+
+export const SALE_PRODUCTS = PRODUCTS.filter((p) => p.sale);
