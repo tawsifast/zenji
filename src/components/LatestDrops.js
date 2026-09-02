@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { PRODUCTS } from "@/data/products";
 
@@ -14,12 +15,12 @@ export default function LatestDrops() {
             LATEST_DROPS
           </h2>
         </div>
-        <a
+        <Link
           href="/drop"
           className="inline-flex items-center gap-2 self-start md:self-auto text-sm font-jetbrains font-bold uppercase tracking-[0.15em] border border-black px-6 py-3 hover:bg-black hover:text-white transition-colors"
         >
           VIEW_ALL
-        </a>
+        </Link>
       </div>
 
       {/* Horizontal scroller */}

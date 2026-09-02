@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Hero() {
   return (
     <section
@@ -54,13 +56,13 @@ export default function Hero() {
             STORY
           </h1>
 
-          <a
+          <Link
             href="/drop"
             className="mt-8 inline-flex items-center gap-3 rounded-none bg-[#bc0100] px-8 py-4 text-[16px] font-anton uppercase text-white transition-colors duration-200 hover:bg-white hover:text-black"
           >
             SHOP THE DROP
             <span aria-hidden="true">→</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

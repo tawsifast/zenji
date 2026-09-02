@@ -1,5 +1,6 @@
 import { Anton, Archivo, JetBrains_Mono, IBM_Plex_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
+import { CartProvider } from "@/components/CartProvider";
 
 const anton = Anton({
   variable: "--font-anton",
@@ -59,7 +60,9 @@ export default function RootLayout({ children }) {
       lang="en-AU"
       className={`${anton.variable} ${archivo.variable} ${jetbrains.variable} ${ibmPlex.variable} ${spaceMono.variable} antialiased`}
     >
-      <body className="font-body-md bg-black text-white">{children}</body>
+      <body className="font-body-md bg-black text-white">
+        <CartProvider>{children}</CartProvider>
+      </body>
     </html>
   );
 }

@@ -8,8 +8,11 @@
   --font-space-mono: var(--font-space-mono), monospace;
 
   --color-primary: #bc0100;
+  --color-primary-red: #bc0100;
   --color-deep-black: #060606;
+  --color-stark-white: #ffffff;
   --color-surface: #faf8f4;
+  --color-surface-warm: #f4f2ed;
 
   --container-container-max: 1440px;
 
@@ -452,6 +455,11 @@ body {
   }
 }
 
+/* ---------- Word reveal that may wrap (e.g. our-story hero) ---------- */
+.word-reveal-wrap .word-reveal-block {
+  white-space: normal;
+}
+
 /* =========================================================
    DROP WAITLIST / CTA
    ========================================================= */
@@ -504,6 +512,15 @@ body {
 }
 .notify-cta:hover {
   background-color: #930100;
+}
+
+@keyframes cart-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
