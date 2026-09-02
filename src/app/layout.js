@@ -1,6 +1,6 @@
 import { Anton, Archivo, JetBrains_Mono, IBM_Plex_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
-import { CartProvider } from "@/components/CartProvider";
+import { CartProvider } from "@/components/shared/CartProvider";
 
 const anton = Anton({
   variable: "--font-anton",
@@ -39,6 +39,11 @@ export const metadata = {
   authors: [{ name: "ZENJI", url: "https://zenji.shop" }],
   creator: "ZENJI",
   publisher: "ZENJI",
+  icons: {
+    icon: "/wm_logo.webp",
+    shortcut: "/wm_logo.webp",
+    apple: "/wm_logo.webp",
+  },
   openGraph: {
     title: "ZENJI — Anime Streetwear Australia | Limited Drops",
     description: "Limited anime streetwear from Australia. Japanese-inspired graphic tees. No restocks. Ever.",
