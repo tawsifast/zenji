@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "@/components/shared/ProductCard";
 import { PRODUCTS } from "@/data/products";
@@ -9,15 +9,15 @@ const FILTERS = ["ALL", "SALE", "NEW_ARRIVAL", "LIMITED", "ZANGETSU"];
 
 export default function CollectionGrid() {
   const searchParams = useSearchParams();
+  const urlSearch = searchParams.get("search") ?? "";
   const [filter, setFilter] = useState("ALL");
-  const [search, setSearch] = useState(() => searchParams.get("search") ?? "");
+  const [search, setSearch] = useState(urlSearch);
+  const [prevUrlSearch, setPrevUrlSearch] = useState(urlSearch);
 
-  useEffect(() => {
-    const urlSearch = searchParams.get("search");
-    if (urlSearch != null) {
-      setSearch(urlSearch);
-    }
-  }, [searchParams]);
+  if (urlSearch !== prevUrlSearch) {
+    setPrevUrlSearch(urlSearch);
+    setSearch(urlSearch);
+  }
 
   const q = search.trim().toLowerCase();
   const filtered = PRODUCTS.filter((p) => {

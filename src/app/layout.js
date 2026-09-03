@@ -1,6 +1,7 @@
 import { Anton, Archivo, JetBrains_Mono, IBM_Plex_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/components/shared/CartProvider";
+import KatanaCursor from "@/components/shared/KatanaCursor";
 
 const anton = Anton({
   variable: "--font-anton",
@@ -67,6 +68,7 @@ export default function RootLayout({ children }) {
     >
       <body className="font-body-md bg-black text-white">
         <CartProvider>{children}</CartProvider>
+        <KatanaCursor />
       </body>
     </html>
   );
