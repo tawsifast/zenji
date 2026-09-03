@@ -39,6 +39,7 @@ export default function Nav() {
   const submitSearch = () => {
     const q = searchQuery.trim();
     setSearchOpen(false);
+    setMobileOpen(false);
     router.push(q ? `/collection?search=${encodeURIComponent(q)}` : "/collection");
   };
 
@@ -372,11 +373,20 @@ export default function Nav() {
               </a>
             ))}
             <div className="pt-2 border-t border-white/10">
-              <form className="flex items-center gap-2 border-b border-white/30 pb-2" role="search">
+              <form
+                className="flex items-center gap-2 border-b border-white/30 pb-2"
+                role="search"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  submitSearch();
+                }}
+              >
                 <input
                   type="text"
                   placeholder="SEARCH..."
                   aria-label="Search drops and collections"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="flex-1 bg-transparent text-[11px] font-jetbrains font-bold uppercase tracking-widest placeholder-white/50 text-white outline-none"
                 />
                 <button type="submit" className="text-white/80">

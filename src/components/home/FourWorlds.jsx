@@ -8,7 +8,7 @@ export default function FourWorlds() {
         <div className="relative h-1/2 w-full overflow-hidden md:h-full md:w-1/2">
           <div className="relative h-full w-full overflow-hidden">
             <Image
-              src="https://zenji.shop/images/fourworlds-1.webp"
+              src="/background_2.webp"
               alt=""
               fill
               sizes="50vw"

@@ -5,6 +5,7 @@ import CollectionGrid from "@/components/collection/CollectionGrid";
 import NotifyMe from "@/components/collection/NotifyMe";
 import Footer from "@/components/shared/Footer";
 import { PRODUCTS } from "@/data/products";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Shop Anime Graphic Tees Australia — ZENJI",
@@ -59,7 +60,9 @@ export default function CollectionPage() {
           </div>
         </section>
 
-        <CollectionGrid />
+        <Suspense>
+          <CollectionGrid />
+        </Suspense>
 
         {/* CTA */}
         <section className="bg-black text-center text-white" style={{ padding: "80px 6%" }}>

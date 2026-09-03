@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import ProductCard from "@/components/shared/ProductCard";
 import { PRODUCTS } from "@/data/products";
 
 const FILTERS = ["ALL", "SALE", "NEW_ARRIVAL", "LIMITED", "ZANGETSU"];
 
 export default function CollectionGrid() {
+  const searchParams = useSearchParams();
   const [filter, setFilter] = useState("ALL");
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(() => searchParams.get("search") ?? "");
+
+  useEffect(() => {
+    const urlSearch = searchParams.get("search");
+    if (urlSearch != null) {
+      setSearch(urlSearch);
+    }
+  }, [searchParams]);
 
   const q = search.trim().toLowerCase();
   const filtered = PRODUCTS.filter((p) => {

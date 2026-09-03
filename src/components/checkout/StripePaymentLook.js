@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useCart } from "@/components/shared/CartProvider";
+import { useCart } from "@/components/CartProvider";
 import { fmtMoney } from "@/data/shop";
 
 const JET = { fontFamily: "var(--font-jetbrains), monospace" };
@@ -82,7 +82,7 @@ function CardPanel() {
   const [emailFocused, setEmailFocused] = useState(false);
 
   return (
-    <div className="px-4 pb-4 ">
+    <div className="px-4 pb-4">
       {showLink && (
         <div className="mb-3 rounded-[8px] border border-black/10 bg-white px-4 py-3">
           <div className="flex items-start justify-between gap-3">
@@ -252,7 +252,8 @@ export default function StripePaymentLook() {
     <div
       role="radiogroup"
       aria-label="Payment method"
-      style={{ border: "1px solid #EFD9D9", borderRadius: 8, overflow: "hidden" }}
+      style={{ border: "1px solid #EFD9D9", borderRadius: 8, overflow: "hidden"}}
+      
     >
       {METHODS.map((m, i) => {
         const isActive = active === m.id;
